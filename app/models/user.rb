@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
   has_many :game_user_relations
   has_many :games, :through => :game_user_relations
 
+  has_many :user_location_relations
+  has_many :locations, :through => :user_location_relations
+
   before_save { |user| user.email = email.downcase }
 
   validates :name, :presence => true, :length => { :maximum => 50 }

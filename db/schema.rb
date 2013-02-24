@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130224101002) do
+ActiveRecord::Schema.define(:version => 20130224112551) do
 
   create_table "game_user_relations", :force => true do |t|
     t.integer  "user_id"
@@ -51,6 +51,16 @@ ActiveRecord::Schema.define(:version => 20130224101002) do
   end
 
   add_index "point_coordinates", ["location_id"], :name => "index_point_coordinates_on_location_id"
+
+  create_table "user_location_relations", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "location_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "user_location_relations", ["location_id"], :name => "index_user_location_relations_on_location_id"
+  add_index "user_location_relations", ["user_id"], :name => "index_user_location_relations_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"
