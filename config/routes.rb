@@ -1,4 +1,16 @@
 FirstApp::Application.routes.draw do
+  get "game_user/login"
+
+  get "game_user/register"
+
+  get "game_user/games"
+
+  get "game_user/game_status"
+
+  get "game_user/request_clue"
+
+  get "game_user/clear_location"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

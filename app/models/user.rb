@@ -1,6 +1,11 @@
 class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation
   has_secure_password
+  
+  has_many :managed_games, :class_name => "Game", :dependent => :destroy
+  
+  has_many :game_user_relations
+  has_many :games, :through => :game_user_relations
 
   before_save { |user| user.email = email.downcase }
 
