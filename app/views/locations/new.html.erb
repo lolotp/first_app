@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<style type="text/css" media="screen">
+		canvas, img { display:block;}
+		canvas { background:url(http://s3.amazonaws.com/s3_location_clues/COM1_L1.jpg) }
+	</style>
+<body>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+</script>
+<p>Canvas:</p>
+<canvas id="myCanvas" width="978" height="400" style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.</canvas><br/>
+<div>
+<label id="x_coord">0</label><br/>
+<label id="y_coord">0</label><br/>
+</div>
+
+<form method="POST" action="/locations/create" enctype="multipart/form-data" >
+	<input type="hidden" name="x_coord" value=0 id="x_coord_form"/>
+	<input type="hidden" name="y_coord" value=0 id="y_coord_form"/>
+	<input type="hidden" name="location[game_id]" value= <%= @game_id %> ></input>
+	<label>Location Info</label>
+	<input type="text" name="location[location_info]" value="" ></input>
+	<table id = "access_points">
+		<tr><td>MAC</td><td>Signal strength</td></tr>
+		<tr><td><input type="text" name="MAC1"></td><td><input type="text" name="signal_strength1"></td></tr>
+		<tr><td><input type="text" name="MAC2"></td><td><input type="text" name="signal_strength2"></td></tr>
+		<tr><td><input type="text" name="MAC3"></td><td><input type="text" name="signal_strength3"></td></tr>
+	</table>
+	<div style="width: 400px;" >
+		 <%= file_field 'upload', 'datafile'  %>
+	</div>
+	<input type="submit" value="Submit">
+</form>
+
+<button id="add_rows">Add</button>
+<script>
+var c=document.getElementById("myCanvas");
+var ctx=c.getContext("2d");
+var rect = c.getBoundingClientRect();
+elemLeft = rect.left
+elemTop = rect.top
+c.addEventListener('click', function(event) {
+    var x = event.pageX - elemLeft,
+        y = event.pageY - elemTop;
+	x_coord = document.getElementById("x_coord");
+	y_coord = document.getElementById("y_coord");
+	x_coord.innerHTML = x;
+	y_coord.innerHTML = y;
+	x_coord_form = document.getElementById("x_coord_form")
+	y_coord_form = document.getElementById("y_coord_form")
+	x_coord_form.value = x
+	y_coord_form.value = y
+
+	radius = 10;
+	var context=c.getContext("2d");
+	context.clearRect(0,0,c.width,c.height);
+	context.beginPath();
+      context.arc(x, y, radius, 0, 2 * Math.PI, false);
+      context.fillStyle = 'green';
+      context.fill();
+      context.lineWidth = 5;
+      context.strokeStyle = '#003300';
+      context.stroke();
+}, false);
+var lastNum = 4;
+var add_row = document.getElementById("add_rows");
+add_row.addEventListener('click', function(event) {
+	var tbl = document.getElementById("access_points");
+	var newRow = document.createElement('tr');
+	var col1 = document.createElement('td');
+	col1.innerHTML = '<input type="text" name="MAC'+lastNum+'">';
+	var col2 = document.createElement('td');
+	col2.innerHTML = '<input type="text" name="signal_strength'+lastNum+'">';
+	
+	newRow.appendChild(col1);
+	newRow.appendChild(col2);
+	//tbl.innerHTML = tbl.innerHTML + '<tr><td><input type="text" name="MAC'+lastNum+'"></td><td><input type="text" name="signal_strength'+lastNum+'"></td></tr>';
+	tbl.appendChild(newRow);
+	lastNum++;
+}, false);
+</script>
+
+</body>
+</html>
+

@@ -1,5 +1,5 @@
 class Location < ActiveRecord::Base
-  attr_accessible :id, :location_info
+  attr_accessible :id, :location_info, :map_x_coordinates, :map_y_coordinates, :clue_file_name
   has_many :point_coordinates
   belongs_to :games
 

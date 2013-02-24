@@ -1,6 +1,6 @@
 <div class="section-header">
 	<h3>
-		Locations for Games: <% @game.name %>
+		Locations for Games: <%= @game.name %>
 	</h3>
 	
 	<table>
@@ -15,6 +15,7 @@
 	  <tr>
 		<td><%= location.id %></td>
 		<td><%= location.location_info %></td>
+		<td><%= link_to 'Destroy', "/locations/destroy?id=" + location.id.to_s %></td>
 	  </tr>
 	  
 	  <% location.point_coordinates.each do |point| %>
@@ -29,5 +30,5 @@
 	<% end %>
 	</table>
 	
-	<a href = "/locations/new">Add Location<a>
+	<a href = <%= "/locations/new?game_id="+@game.id.to_s %> >Add Location<a>
 </div>
