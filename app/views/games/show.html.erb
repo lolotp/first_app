@@ -1,0 +1,33 @@
+<div class="section-header">
+	<h3>
+		Locations for Games: <% @game.name %>
+	</h3>
+	
+	<table>
+	  <tr>
+		<th>ID</th>
+		<th>Info</th>
+		<th></th>
+		<th></th>
+	  </tr>
+
+	<% @locations.each do |location| %>
+	  <tr>
+		<td><%= location.id %></td>
+		<td><%= location.location_info %></td>
+	  </tr>
+	  
+	  <% location.point_coordinates.each do |point| %>
+	  <tr>
+	    <td></td>
+		<td><%= point.MAC %></td>
+		<td><%= point.signal_str %></td>
+	  </tr>
+	  
+	  <% end %>
+	  
+	<% end %>
+	</table>
+	
+	<a href = "/locations/new">Add Location<a>
+</div>

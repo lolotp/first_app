@@ -1,0 +1,24 @@
+<div class="section-header">
+	<h3>
+		User Control Panel
+	</h3>
+	
+	<table>
+	  <tr>
+		<th>ID</th>
+		<th>Name</th>
+		<th></th>
+		<th></th>
+	  </tr>
+
+	<% @mygames.each do |game| %>
+	  <tr>
+		<td><%= game.id %></td>
+		<td><%= game.name %></td>
+		<td><%= link_to 'Manage', '/games/'+game.id.to_s %></td>
+		<td><%= link_to 'Destroy', "www.google.com", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	  </tr>
+	<% end %>
+	</table>
+</div>
+

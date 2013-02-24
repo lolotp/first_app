@@ -13,6 +13,10 @@ FirstApp::Application.routes.draw do
   post "game_user/request_clue"
 
   post "game_user/clear_location"
+  
+  #match '/signup',  to: 'users#new'
+  match '/signin',  to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy', via: :delete
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -28,6 +32,9 @@ FirstApp::Application.routes.draw do
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
   resources :locations
+  resources :sessions, :only => [:new, :create, :destroy]
+  resources :users, :only => [:index]
+  resources :games, :only => [:index, :create, :show]
   # Sample resource route with options:
   #   resources :products do
   #     member do
