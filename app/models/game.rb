@@ -7,5 +7,7 @@ class Game < ActiveRecord::Base
            :through => :game_user_relations,
 	   :source => :user
 
+  has_many :locations
+
   validates :user_id, :presence => true
 end
