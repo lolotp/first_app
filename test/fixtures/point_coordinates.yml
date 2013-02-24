@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  MAC: MyString
+  signal_str: 1
+
+two:
+  MAC: MyString
+  signal_str: 1
