@@ -1,4 +1,5 @@
 FirstApp::Application.routes.draw do
+
   post "game_user/login"
 
   post "game_user/register"
@@ -24,7 +25,7 @@ FirstApp::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-
+  resources :locations
   # Sample resource route with options:
   #   resources :products do
   #     member do
@@ -50,7 +51,8 @@ FirstApp::Application.routes.draw do
   #       get 'recent', :on => :collection
   #     end
   #   end
-
+  
+  
   # Sample resource route within a namespace:
   #   namespace :admin do
   #     # Directs /admin/products/* to Admin::ProductsController

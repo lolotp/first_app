@@ -58,5 +58,12 @@ module FirstApp
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+	
+	#S3 = AWS::S3.new(  
+	#	:access_key_id     => 'AKIAIKAVJTEFWL4CV2RA',  
+	#	:secret_access_key => 'pzEyC6bZBDz1p85qc6JBdLK/jjcWEdr7UNsRJyRJ'  
+	#)
+	
+	BUCKET = "s3_location_clues"
   end
 end

@@ -1,0 +1,20 @@
+<%= form_for @location, :html => {:multipart => true, :accept => "image/gif,image/png,image/jpg"} do |f| %>
+
+   <div>
+     <label>Location</label>
+   </div>
+   <div style="width: 400px;" >
+     <%= file_field 'upload', 'datafile'  %>
+   </div>
+   
+   <%= f.label :game_id %>:
+   <%= f.text_field :game_id %><br/>
+   
+   <%= f.label :location_info %>:
+   <%= f.text_field :location_info %><br/>
+
+ <div>
+   <%= f.submit "Create location", :class => "button" %>
+ </div>
+
+<% end  %>

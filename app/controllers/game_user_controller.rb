@@ -26,7 +26,7 @@ class GameUserController < ApplicationController
   end
 
   def register
-	user = User.new(:name => params[:name], :email => params[:email], :password => params[:password], :password_confirmation => params[:password_confirmation])
+	user = User.new(:name => params[:name], :email => params[:email], :password => params[:password], :password_confirmation => params[:password])
 	respond_to do |format|
 	  if user
 		if user.save

@@ -1,2 +1,2 @@
 login/?email=lolotp@hotmail.com&password=foobar
-login/?email=a@b.c&password=123456
+login/?email=a@b.com&password=abcdef
