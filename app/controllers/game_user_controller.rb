@@ -57,7 +57,7 @@ class GameUserController < ApplicationController
         if (user)
             game = user.games.find_by_id( params[:game_id] )
             if (game)
-                format.json { render :json => game.locations }
+                format.json { render :json => user.locations.where("game_id = ?",params[:game_id]) }
             else
                 format.html { render :text => "Error: Invalid game id", :status => 401}
             end
