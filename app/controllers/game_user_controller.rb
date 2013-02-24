@@ -68,8 +68,14 @@ class GameUserController < ApplicationController
   end
 
   def request_clue
+  
   end
 
   def clear_location
+    user = User.find_by_id( get_user_id_from_security_token (params[:security_token]) )
+    if user
+        
+    else
+    end
   end
 end
