@@ -1,3 +1,5 @@
+require 'aws-sdk'
+
 class GameUserController < ApplicationController
   def get_user_id_from_security_token(token)
     begin
@@ -95,7 +97,10 @@ class GameUserController < ApplicationController
             
             if match_coordinate == l.point_coordinates.size #or greater than some threshold to allow more flexibility
               match_location += 1
-              format.html { render :text => "Location matches with " + l.location_info }
+			  s3 = ::AWS::S3.new
+			  b = s3.buckets.create(FirstApp::Application::BUCKET)
+			  o = b.objects[l.clue_file_name]
+              format.html { render :text => o.read }
             end
             
           end
