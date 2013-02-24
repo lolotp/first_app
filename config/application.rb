@@ -65,5 +65,6 @@ module FirstApp
 	#)
 	
 	BUCKET = "s3_location_clues"
+	IMAGE_BUCKET = "s3_map_images"
   end
 end

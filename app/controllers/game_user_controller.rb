@@ -136,4 +136,18 @@ class GameUserController < ApplicationController
         format.html { render :text => "Error: Invalid security token", :status => 401}
     end
   end
+  
+  def get_map_image_url
+    game = Game.find_by_id( params[:game_id] )
+    respond_to do |format|
+        if game
+            s3 = ::AWS::S3.new
+			b = s3.buckets.create(FirstApp::Application::MAP_BUCKET)
+			o = b[game[:map_image]]
+			format.html { render:text => o.public_url }
+        else
+            format.html { render:text => "Error: game id not found" }
+        end
+    end
+  end
 end
