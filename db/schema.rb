@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130224184852) do
+ActiveRecord::Schema.define(:version => 20130225010456) do
 
   create_table "game_user_relations", :force => true do |t|
     t.integer  "user_id"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20130224184852) do
     t.string   "clue_file_name"
     t.integer  "map_x_coordinates"
     t.integer  "map_y_coordinates"
+    t.string   "next_hint"
   end
 
   add_index "locations", ["game_id"], :name => "index_locations_on_game_id"

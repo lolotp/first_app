@@ -3,7 +3,7 @@
 
 <style type="text/css" media="screen">
 		canvas, img { display:block;}
-		canvas { background:url(http://s3.amazonaws.com/s3_location_clues/COM1_L1.jpg) }
+		canvas { background:url( <%= @url.to_s %> ) }
 	</style>
 <body>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">
@@ -21,7 +21,9 @@ Your browser does not support the HTML5 canvas tag.</canvas><br/>
 	<input type="hidden" name="y_coord" value=0 id="y_coord_form"/>
 	<input type="hidden" name="location[game_id]" value= <%= @game_id %> ></input>
 	<label>Location Info</label>
-	<input type="text" name="location[location_info]" value="" ></input>
+	<input type="text" name="location[location_info]" value="" ></input><br>
+	<label>Next Hint</label>
+	<input type="text" name="location[next_hint]" value="" ></input><br>
 	<table id = "access_points">
 		<tr><td>MAC</td><td>Signal strength</td></tr>
 		<tr><td><input type="text" name="MAC1"></td><td><input type="text" name="signal_strength1"></td></tr>

@@ -18,6 +18,10 @@ FirstApp::Application.routes.draw do
   
   get "locations/destroy"
   
+  get "games/new"
+  
+  post "games/create"
+  
   #match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete

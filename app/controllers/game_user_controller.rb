@@ -129,6 +129,8 @@ class GameUserController < ApplicationController
             rel = UserLocationRelation.new
             rel.user = user
             rel.location = loc
+			rel.save
+			format.html { render :text => loc[:next_hint] }
         else
             format.html { render :text => "Error: Invalid location id", :status => 400}
         end        
@@ -144,7 +146,7 @@ class GameUserController < ApplicationController
             s3 = ::AWS::S3.new
 			b = s3.buckets.create(FirstApp::Application::MAP_BUCKET)
 			o = b[game[:map_image]]
-			format.html { render:text => o.public_url }
+			format.html { render:text => o.public_url.to_s }
         else
             format.html { render:text => "Error: game id not found" }
         end

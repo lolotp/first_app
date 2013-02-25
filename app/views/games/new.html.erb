@@ -1,0 +1,11 @@
+<form method="POST" action="/games/create" enctype="multipart/form-data" >
+	<label>Game name</label>
+	<input type="text" name="name"></input>
+	<label>Game description</label>
+	<input type="text" name="description"></input>
+	<div style="width: 400px;" >
+		 <%= file_field 'upload', 'datafile'  %>
+	</div>
+	
+	<input type="submit" value="Submit">
+</form>

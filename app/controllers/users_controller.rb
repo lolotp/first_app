@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	def index
-		@mygames = current_user.games.all
+		@mygames = current_user.managed_games.all
 	
 		respond_to do |format|
 			format.html #index.html.erb

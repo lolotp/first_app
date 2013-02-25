@@ -8,6 +8,7 @@ class LocationsController < ApplicationController
 	
 	def new
 		@game_id = params[:game_id]
+		@url = Game.find_by_id(@game_id).map_image
 	end
 	
 	def create
@@ -19,6 +20,7 @@ class LocationsController < ApplicationController
 				@location[:game_id] = game[:id]
 				@location[:map_x_coordinates] = params[:x_coord]
 				@location[:map_y_coordinates] = params[:y_coord]
+				@location[:next_hint] = params[:location][:next_hint]
 				
 				fileUp = params[:upload]
 				orig_filename = fileUp['datafile'].original_filename
